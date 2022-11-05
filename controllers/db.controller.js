@@ -57,9 +57,14 @@ exports.createCompany = async (req, res) => {
       //console.log("result.dbAddress---> ", result.dbAddress);
       getDataFromAddress(result.dbAddress, insertData);
 
-      return result.dbAddress;
+      //console.log("result.dbAddress--->[0] ", result.dbAddress);
+      return;
     });
     //res.send("successed....");
+    for (let i = 0; i < data.length; i++) {
+      console.log(`data ${i}`, data[i].dbAddress);
+    }
+
     res.send(data);
   });
 };
@@ -72,10 +77,12 @@ async function getDataFromAddress(databaseAddress, inputValue) {
     productSchema
   );
   const _DB1 = await ADDdb1.find({}).then((data) => {
-    data.forEach((resule) => {
-      console.log("resule.values-----------> ", resule.values);
-      console.log("inputValue-----------> ", inputValue);
+    //console.log("inputValue-----------> ", inputValue);
+    data.forEach((result) => {
+      //console.log("result.values-----------> ", result.values);
+
       // เดี๋ยวเอามาคำนวณ**********
+      return result;
     });
   });
 }
